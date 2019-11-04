@@ -113,9 +113,9 @@ require_once '../src/db_connect.php';
                 echo $row['priority'];
                 ?>
                 </span>
-                              <span class="section-heading-lower">Location:
+                              <span class="section-heading-lower">
                   <?php
-                  echo $row['location'];
+                  echo $row['explanation'];
                   ?>
                 </span>
                           </h2>
@@ -130,9 +130,9 @@ require_once '../src/db_connect.php';
                   <!--<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/pipe.jpg" alt="">-->
                   <div class="product-item-description d-flex ml-auto">
                       <div class="bg-faded p-5 rounded">
-                          <p class="mb-0">
+                          <p class="mb-0">Location:
                               <?php
-                              echo $row['explanation'];
+                              echo $row['location'];
                               ?>
                           </p>
                       </div>
