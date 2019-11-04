@@ -8,7 +8,7 @@ $server_root = dirname($_SERVER['PHP_SELF']);
 
 $dbhost = 'localhost';  // Most likely will not need to be changed
 $dbname = 'test';   // Needs to be changed to your designated table database name
-$dbuser = '';   // Needs to be changed to reflect your LAMP server credentials
+$dbuser = 'root';   // Needs to be changed to reflect your LAMP server credentials
 $dbpass = ''; // Needs to be changed to reflect your LAMP server credentials
 
 $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);

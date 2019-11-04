@@ -37,5 +37,5 @@
     $stmt->execute();
     $stmt->close();
 
-    header("Location: ../public_html/reportSuccessful.php");
+    header("Location: ../public_html/report.php");
 ?>

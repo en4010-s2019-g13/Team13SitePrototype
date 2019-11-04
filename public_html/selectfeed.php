@@ -93,7 +93,7 @@ require_once '../src/db_connect.php';
   
           
           <?php
-          echo '<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="../src/' . $row['imagelocation'] . '">';
+          echo '<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="'. $row['imagelocation'] . '"/>';
                 ?>
           
         <!--<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/pipe.jpg" alt="">-->

@@ -37,7 +37,7 @@ function upload_image()
     ini_set('file_uploads', 'On');
     
     $randomImageID = uniqid();
-    $target_dir = "uploads/";
+    $target_dir = "../public_html/img/";
     $target_file = $target_dir . $randomImageID . basename($_FILES["imageToUpload"]["name"]);
     
     $uploadOk = 1;

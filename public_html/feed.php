@@ -1,6 +1,7 @@
 <?php
 //redirects to login required page if not logged in
 require_once '../src/redir_to_login.php';
+require_once '../src/db_connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -69,9 +70,9 @@ require_once '../src/redir_to_login.php';
                                 <span class="section-heading-lower"><?php echo $_SESSION['user']; ?></span>
                                 <span>              
                                     <br>
-                                    <a href="selectreport.php">View Reports</a>
+                                    <a href="report.php">View Reports</a>
                                     <br>
-                                    <a href="selectfeed.php">View Feed Items</a>
+                                    <a href="feed.php">View Feed Items</a>
                                 </span>
                             </h2>
                             
@@ -85,46 +86,95 @@ require_once '../src/redir_to_login.php';
             </div>
         </section>
 
-        <section class="page-section cta">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-9 mx-auto">
-                        <div class="cta-inner text-center rounded">
-                            <h2 class="section-heading mb-5">
-                                <span class="section-heading-upper">Weekly Schedule</span>
-                                <span class="section-heading-lower">Get Involved</span>
-                            </h2>
-                            <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Monday
-                                    <span class="ml-auto">SWE Meeting 6-7PM in EE</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Tuesday
-                                    <span class="ml-auto">TED Talk @Auditorium 10-12PM</span>
-                                </li>                             
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Wednesday
-                                    <span class="ml-auto">Yoga Session @Rec 2PM</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Thursday
-                                    <span class="ml-auto">Free Ice cream @SG 6PM</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Friday
-                                    <span class="ml-auto">Free shirts on Breezeway @9AM</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    Saturday
-                                    <span class="ml-auto">9:00 AM to 5:00 PM</span>
-                                </li>
-                            </ul>
+<!--        <section class="page-section cta">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-xl-9 mx-auto">-->
+<!--                        <div class="cta-inner text-center rounded">-->
+<!--                            <h2 class="section-heading mb-5">-->
+<!--                                <span class="section-heading-upper">Weekly Schedule</span>-->
+<!--                                <span class="section-heading-lower">Get Involved</span>-->
+<!--                            </h2>-->
+<!--                            <ul class="list-unstyled list-hours mb-5 text-left mx-auto">-->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Monday-->
+<!--                                    <span class="ml-auto">SWE Meeting 6-7PM in EE</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Tuesday-->
+<!--                                    <span class="ml-auto">TED Talk @Auditorium 10-12PM</span>-->
+<!--                                </li>                             -->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Wednesday-->
+<!--                                    <span class="ml-auto">Yoga Session @Rec 2PM</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Thursday-->
+<!--                                    <span class="ml-auto">Free Ice cream @SG 6PM</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Friday-->
+<!--                                    <span class="ml-auto">Free shirts on Breezeway @9AM</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-unstyled-item list-hours-item d-flex">-->
+<!--                                    Saturday-->
+<!--                                    <span class="ml-auto">9:00 AM to 5:00 PM</span>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+        <?php
+
+        $result = $connection->query("SELECT date,location,explanation,imagelocation FROM feeds");
+
+        while($row = $result->fetch_assoc())
+
+        { ?>
+
+            <section class="page-section">
+                <div class="container">
+                    <div class="product-item">
+                        <div class="product-item-title d-flex">
+                            <div class="bg-faded p-5 d-flex mr-auto rounded">
+                                <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">Date:
+                <?php
+                echo $row['date'];
+                ?>
+                </span>
+                                    <span class="section-heading-lower">Location:
+                  <?php
+                  echo $row['location'];
+                  ?>
+                </span>
+                                </h2>
+                            </div>
+                        </div>
+
+
+                        <?php
+                        echo '<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="'. $row['imagelocation'] . '"/>';
+                        ?>
+
+                        <!--<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/pipe.jpg" alt="">-->
+                        <div class="product-item-description d-flex ml-auto">
+                            <div class="bg-faded p-5 rounded">
+                                <p class="mb-0">
+                                    <?php
+                                    echo $row['explanation'];
+                                    ?>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <?php
+        }
+        ?>
 
         <section class="page-section about-heading">
             <div class="container">

@@ -212,9 +212,9 @@ button on extra small screens */
                 </span>
                 <span>              
                     <br>
-                    <a href="selectreport.php">View Reports</a>
+                    <a href="report.php">View Reports</a>
                     <br>
-                    <a href="selectfeed.php">View Feed Items</a>
+                    <a href="feed.php">View Feed Items</a>
                 </span>
             </h2>
               <form action="../src/logout.php"
